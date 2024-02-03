@@ -61,12 +61,14 @@ function keyDownHandler(e) {
 }
 
 function mouseMoveHandler(e) {
-    const relativeX = e.clientX - canvas.offsetLeft;
-    if (relativeX > 0 && relativeX < canvas.width) {
-      paddleX = Math.min(
-                        Math.max(0, relativeX - paddleWidth / 2), 
-                        canvas.width - paddleWidth
-                        )
+    if (event.buttons === 1) { // Проверяем, что левая клавиша мыши зажата
+        const relativeX = e.clientX - canvas.offsetLeft;
+        if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = Math.min(
+                            Math.max(0, relativeX - paddleWidth / 2), 
+                            canvas.width - paddleWidth
+                            )
+        }
     }
   }
 
