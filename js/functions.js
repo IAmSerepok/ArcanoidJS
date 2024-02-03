@@ -52,7 +52,7 @@ function keyDownHandler(e) {
     }
 }
   
-  function keyUpHandler(e) {
+function keyUpHandler(e) {
     if (e.key === "Right" || e.key === "ArrowRight") {
       rightPressed = false;
     } else if (e.key === "Left" || e.key === "ArrowLeft") {
@@ -61,16 +61,22 @@ function keyDownHandler(e) {
 }
 
 function mouseMoveHandler(e) {
-    if (event.buttons === 1) { // Проверяем, что левая клавиша мыши зажата
-        const relativeX = e.clientX - canvas.offsetLeft;
-        if (relativeX > 0 && relativeX < canvas.width) {
-        paddleX = Math.min(
-                            Math.max(0, relativeX - paddleWidth / 2), 
-                            canvas.width - paddleWidth
-                            )
-        }
+    const relativeX = e.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+    paddleX = Math.min(
+                        Math.max(0, relativeX - paddleWidth / 2), 
+                        canvas.width - paddleWidth
+                        )
     }
-  }
+}
+
+function touchMoveHandler(e) {
+    const touch = e.touches[0];
+    const relativeX = touch.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = Math.min(Math.max(0, relativeX - paddleWidth / 2), canvas.width - paddleWidth);
+    }
+}
 
 // function drawScore() {
 //     ctx.font = "16px Arial";
